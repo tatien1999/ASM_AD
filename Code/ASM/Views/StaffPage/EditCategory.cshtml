@@ -1,0 +1,83 @@
+﻿@model ASM.Models.Category_Course
+    @{
+        ViewBag.Title = "EditCategory";
+        Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+    }
+
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Edit Category</a> </div>
+        <h1>Edit Category</h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        <form action="EditCategory" method="POST" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">CategoryID :</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(x => x.CategoryID, new { @id = "CategoryID", @onchange = "CheckValue()" })
+                                    <p id="Status"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Category Name :</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(x => x.Category_Name, new { @id = "CategoryName", @onchange = "CheckValue2()" })
+                                    <p id="Status2"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Description</label>
+                                <div class="controls">
+                                    @Html.TextAreaFor(x => x.Description)
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    function CheckValue() {
+        $("#Status").html("Checking...");
+        $.post("@Url.Action("CheckValueCate", "StaffPage")",
+            {
+                check: $("#CategoryID").val()
+            },
+    function (data) {
+        if (data == 0) {
+            $("#Status").html('<font color="Green"> Avaiable! you can use it.</font>');
+            $("#Category").css("border-color", "Green");
+        }
+        else {
+            $("#Status").html('<font color="Red"> User is Exits.</font>');
+            $("#Category").css("border-color", "Red");
+        }
+        });
+    }
+
+    function CheckValue2() {
+        $("#Status2").html("Checking...");
+        $.post("@Url.Action("CheckNameCate", "StaffPage")",
+            {
+                username: $("#CategoryName").val()
+            },
+    function (data) {
+        if (data == 0) {
+            $("#Status2").html('<font color="Green"> Avaiable! you can use it.</font>');
+            $("#CategoryName").css("border-color", "Green");
+        }
+        else {
+            $("#Status2").html('<font color="Red"> User is Exits.</font>');
+            $("#CategoryName").css("border-color", "Red");
+        }
+        });
+    }
+    </script>

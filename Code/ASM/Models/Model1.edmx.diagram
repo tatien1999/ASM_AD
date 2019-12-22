@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="97e023152e3e40c4926c05dce94d7e39" Name="Diagram1">
+        <EntityTypeShape EntityType="Training_managementModel.Category_Course" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_managementModel.Course" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_managementModel.Profile_User" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_managementModel.Topic" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_managementModel.User_Account" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="Training_managementModel.FK_CateId" ManuallyRouted="false" />
+        <AssociationConnector Association="Training_managementModel.FK_CourId" ManuallyRouted="false" />
+        <AssociationConnector Association="Training_managementModel.FK_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Training_managementModel.FK_user_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Training_managementModel.FK_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

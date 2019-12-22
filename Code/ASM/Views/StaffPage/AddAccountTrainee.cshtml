@@ -1,0 +1,85 @@
+﻿@model ASM.Models.User_Account
+@{
+    ViewBag.Title = "AddAccountTrainee";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Add Account</a> </div>
+    <h1>Add Account</h1>
+</div>
+<div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <form action="AddAccountTrainee" method="POST" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">Username</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.UserName, new { @id = "UserName", @onchange = "CheckValue2()" })
+                                <p id="Status2"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Password</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.Password)
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Position</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.Position)
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function CheckValue() {
+        $("#Status").html("Checking...");
+        $.post("@Url.Action("CheckValueTrainee", "StaffPage")",
+            {
+                check: $("#UserID").val()
+            },
+    function (data) {
+        if (data == 0) {
+            $("#Status").html('<font color="Green"> Avaiable! you can use it.</font>');
+            $("#UserID").css("border-color", "Green");
+        }
+        else {
+            $("#Status").html('<font color="Red"> User is Exits.</font>');
+            $("#UserID").css("border-color", "Red");
+        }
+        });
+    }
+
+    function CheckValue2() {
+        $("#Status2").html("Checking...");
+        $.post("@Url.Action("CheckNameTrainee", "StaffPage")",
+            {
+                username: $("#UserName").val()
+            },
+    function (data) {
+        if (data == 0) {
+            $("#Status2").html('<font color="Green"> Avaiable! you can use it.</font>');
+            $("#UserName").css("border-color", "Green");
+        }
+        else {
+            $("#Status2").html('<font color="Red"> User is Exits.</font>');
+            $("#UserName").css("border-color", "Red");
+        }
+        });
+    }
+</script>
+
+
+
